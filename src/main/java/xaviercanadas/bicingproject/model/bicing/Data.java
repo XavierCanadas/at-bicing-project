@@ -1,5 +1,8 @@
-package xaviercanadas.bicingproject.model;
+package xaviercanadas.bicingproject.model.bicing;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Data(
         Stations data
 ) {

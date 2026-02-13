@@ -1,4 +1,4 @@
-package xaviercanadas.bicingproject.model;
+package xaviercanadas.bicingproject.model.bicing;
 
 import jakarta.validation.constraints.NotNull;
 

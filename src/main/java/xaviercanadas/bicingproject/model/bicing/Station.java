@@ -1,7 +1,9 @@
-package xaviercanadas.bicingproject.model;
+package xaviercanadas.bicingproject.model.bicing;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Station(
         int station_id,
         int num_bikes_available,
