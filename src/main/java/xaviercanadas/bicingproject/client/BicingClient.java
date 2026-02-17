@@ -8,6 +8,7 @@ import jakarta.ws.rs.core.MediaType;
 import xaviercanadas.bicingproject.model.bicing.Data;
 
 public class BicingClient {
+    // This is a test client to check the api works.
     public static void main(String[] args) throws Exception {
 
         String bicingUrl = "https://opendata-ajuntament.barcelona.cat/";
