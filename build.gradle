@@ -28,6 +28,7 @@ dependencies {
     implementation('org.glassfish.jersey.inject:jersey-cdi2-se:4.0.0-M2')
     implementation('org.glassfish.jersey.core:jersey-client:4.0.0-M2')
     implementation('org.jboss.weld.se:weld-se-core:6.0.3.Final')
+    implementation('log4j:log4j:1.2.17')
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
