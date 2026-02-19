@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>BAN Project - Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        h1 { text-align: center; color: #333; }
+        
+        .card { 
+            background: white; 
+            border: 1px solid #ddd; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        
+        button { 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 16px; 
+        }
+        button:hover { background-color: #0056b3; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+
+        .error { color: #d9534f; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Bicing's Control Panel</h1>
+
+    <div class="card">
+        <h2>🚲 1. Station List</h2>
+        <p>Connect with backend to retrieve the current state.</p>
+        
+        <button onclick="loadStations()">Load Stations</button>
+        
+        <div id="stations-output"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
