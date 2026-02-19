@@ -1,8 +1,8 @@
-package xaviercanadas.bicingproject.model.telegram;
+package xaviercanadas.bicingproject.model;
 
 import jakarta.validation.constraints.NotNull;
 
-public record Message(
+public record TelegramMessage(
         long chat_id,
         String text
 ) {
