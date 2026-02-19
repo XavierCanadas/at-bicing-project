@@ -5,9 +5,15 @@ import xaviercanadas.bicingproject.dto.SubscribeRequest;
 import xaviercanadas.bicingproject.model.Client;
 import xaviercanadas.bicingproject.registry.ClientRegistry;
 
+import java.util.List;
+
 public class ClientService {
 
     private final static Logger logger = Logger.getLogger(ClientService.class);
+
+    public static List<Client> getAllClients() {
+        return ClientRegistry.getInstance().getAllClients();
+    }
 
     public static void addClient(SubscribeRequest request) {
         ClientRegistry registry = ClientRegistry.getInstance();

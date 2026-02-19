@@ -1,6 +1,7 @@
 package xaviercanadas.bicingproject.resources;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -16,6 +17,13 @@ public class ClientResource {
 
     private final static Logger logger = Logger.getLogger(ClientResource.class);
 
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllClients() {
+        logger.info("Received request to get all clients");
+        return Response.ok(ClientService.getAllClients()).build();
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
