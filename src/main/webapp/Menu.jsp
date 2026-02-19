@@ -9,7 +9,7 @@
         <i class="fa fa-map-marker"></i> Stations
     </a>
 
-    <a href="#" class="w3-bar-item w3-button w3-hover-white" onclick="App.loadPage('Clients'); return false;">
+    <a href="#" class="w3-bar-item w3-button w3-hover-white" onclick="App.loadClients(); return false;">
         <i class="fa fa-users"></i> Clients
     </a>
 

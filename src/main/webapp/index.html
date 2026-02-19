@@ -23,6 +23,7 @@
             // Load initial content
             $('#navigation').load("Menu.jsp");
             $('#content').load("Stations.jsp");
+            $('#rcolumn').load('NewClient.jsp');
 
             // Attach global events
             App.bindEvents();
@@ -31,6 +32,11 @@
 
         App.loadPage = function (page) {
             $('#content').load(page + ".jsp");
+        };
+
+        App.loadClients = function () {
+            $('#content').load('Clients.jsp');
+
         };
 
         App.bindEvents = function () {
@@ -73,7 +79,9 @@
 
     <!-- Left Column -->
     <div class="w3-container w3-col m3 w3-hide-small">
-        <div id="rcolumn"></div>
+        <div id="lcolumn">
+            <p> </p>
+        </div>
     </div>
     <!-- Middle Column -->
     <div class="w3-container w3-col m6">
@@ -81,12 +89,13 @@
     </div>
     <!-- Right Column -->
     <div class="w3-container w3-col m3 w3-hide-small">
-        <div id="lcolumn"></div>
+        <div id="rcolumn"></div>
     </div>
 
 </div>
 <!-- End Content -->
 
 <script src="js/stations.js"></script>
+<script src="js/clients.js"></script>
 </body>
 </html>
