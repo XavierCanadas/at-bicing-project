@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'war'
+    id 'eclipse'
+    id 'eclipse-wtp'
 }
 
 group 'xaviercanadas'

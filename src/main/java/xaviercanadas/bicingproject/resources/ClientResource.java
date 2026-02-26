@@ -37,6 +37,16 @@ public class ClientResource {
                     .entity("Invalid request: Missing required fields").build();
         }
 
+        logger.info("Verifying user's age via Open Gateway...");
+        boolean isAdult = xaviercanadas.bicingproject.service.OpenGatewayService.isAdult(request.phone());
+        
+        if (!isAdult) {
+            logger.warn("The client with phone number " + request.phone() + " did not pass the age verification.");
+            GenericResponse errorResponse = new GenericResponse("You must be an adult to subscribe (over 18).");
+            return Response.status(Response.Status.FORBIDDEN)
+                    .entity(errorResponse).build();
+        }
+
         try {
             ClientService.addClient(request);
             logger.info("Client added successfully: " + request.phone());
