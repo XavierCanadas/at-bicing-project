@@ -55,6 +55,23 @@ App.Clients.loadAll = function () {
     });
 };
 
+App.Clients.validateForm = function (payload) {
+    console.log(payload);
+    if (!payload.phone || !payload.phone.match(/^\+?[0-9]{7,15}$/)) {
+        return "Phone number must be 7 to 15 digits without spaces, optional '+' at the beginning.";
+    }
+    if (!payload.telegram_token || payload.telegram_token.length < 1) {
+        return "Telegram token is required.";
+    }
+    if (!payload.chat_id || isNaN(payload.chat_id) || payload.chat_id === 0) {
+        return "Chat ID must be a valid number and not zero.";
+    }
+    if (!Array.isArray(payload.stations_ids) || payload.stations_ids.length === 0) {
+        return "You must specify at least one station.";
+    }
+    return null;
+};
+
 App.Clients.submit = function (event) {
     event.preventDefault();
 
@@ -73,6 +90,16 @@ App.Clients.submit = function (event) {
         chat_id:        parseInt($('#chat_id').val().trim(), 10),
         stations_ids:   stationsIds
     };
+    console.log("Validate")
+    const errorMsg = App.Clients.validateForm(payload);
+    console.log("errormsg")
+    if (errorMsg) {
+        $feedback.html(`
+            <div class="w3-panel w3-red w3-round">
+                <p><i class="fa fa-times"></i> ${errorMsg}</p>
+            </div>`);
+        return;
+    }
 
     $feedback.html('<p><i class="fa fa-spinner fa-spin"></i> Submitting...</p>');
     $btn.prop('disabled', true);

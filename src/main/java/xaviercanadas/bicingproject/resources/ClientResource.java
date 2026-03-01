@@ -25,16 +25,26 @@ public class ClientResource {
         return Response.ok(ClientService.getAllClients()).build();
     }
 
+    private boolean isValidRequest(SubscribeRequest request) {
+        if (request == null) return false;
+        if (request.phone() == null || request.phone().isBlank()) return false;
+        if (!request.phone().matches("\\+?[0-9]{7,15}")) return false;
+        if (request.telegramToken() == null || request.telegramToken().isBlank()) return false;
+        if (request.chatId() == 0) return false;
+        if (request.stationsIds() == null || request.stationsIds().isEmpty()) return false;
+        return true;
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addClient(SubscribeRequest request) {
         logger.info("Received subscription request: " + request);
 
-        if (request == null || request.phone() == null || request.telegramToken() == null || request.chatId() == 0) {
-            logger.warn("Invalid subscription request: Missing required fields");
+        if (!isValidRequest(request)) {
+            logger.warn("Invalid subscription request: Missing or invalid required fields");
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Invalid request: Missing required fields").build();
+                    .entity(new GenericResponse("Invalid request: Missing or invalid required fields")).build();
         }
 
         logger.info("Verifying user's age via Open Gateway...");

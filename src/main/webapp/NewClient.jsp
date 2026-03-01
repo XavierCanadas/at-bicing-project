@@ -15,6 +15,7 @@
                 <label class="w3-text-theme"><b><i class="fa fa-phone"></i> Phone number</b></label>
                 <input class="w3-input w3-border w3-round" type="tel" id="phone"
                        name="phone" placeholder="+34 600 000 000" required>
+                <span class="w3-small w3-text-grey">Required format: +34612345678 or 612345678 (7-15 digits without spaces, optional '+')</span>
             </div>
 
             <!-- Telegram Token -->
@@ -36,7 +37,6 @@
                 <label class="w3-text-theme"><b><i class="fa fa-map-marker"></i> Station IDs</b></label>
                 <input class="w3-input w3-border w3-round" type="text" id="stations_ids"
                        name="stations_ids" placeholder="1, 42, 87 (comma-separated)">
-                <span class="w3-small w3-text-grey">Leave empty to subscribe to all stations.</span>
             </div>
 
             <!-- Submit -->
