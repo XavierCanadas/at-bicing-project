@@ -2,6 +2,7 @@ package xaviercanadas.bicingproject.model.bicing;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
+import xaviercanadas.bicingproject.model.TelegramMessage;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record Station(
@@ -24,5 +25,15 @@ public record Station(
                 ", is_charging_station: " + is_charging_station +
                 ", status: " + status + '\'' +
                 '}';
+    }
+
+    // Helper to
+    public String toMessage() {
+        return "Station " + station_id + "\n" +
+                "  - Available bikes: " + num_bikes_available + "\n" +
+                "  - Free docks: " + num_docks_available + "\n" +
+                "  - Last update: " + last_reported + "\n" +
+                "  - Charging station?: " + (is_charging_station ? "Yes" : "No") + "\n" +
+                "  - Status: " + status;
     }
 }

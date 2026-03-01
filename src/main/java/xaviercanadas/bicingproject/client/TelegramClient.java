@@ -1,6 +1,7 @@
 package xaviercanadas.bicingproject.client;
 
 import xaviercanadas.bicingproject.model.TelegramMessage;
+import xaviercanadas.bicingproject.model.bicing.Station;
 import xaviercanadas.bicingproject.service.TelegramService;
 
 public class TelegramClient {
@@ -11,7 +12,10 @@ public class TelegramClient {
 
         String telegramToken = System.getenv("TOKEN_TELEGRAM");
         String telegramChatId = System.getenv("CHAT_ID_TELEGRAM");
-        TelegramMessage message = new TelegramMessage(Long.parseLong(telegramChatId), "Hello from TelegramClient!");
+
+        Station station = new Station(12, 43, 12, 4342, true, "a");
+
+        TelegramMessage message = new TelegramMessage(Long.parseLong(telegramChatId), station.toMessage());
         TelegramService.sendMessage(message, telegramToken);
 
     }
