@@ -14,7 +14,7 @@
             <div class="w3-section">
                 <label class="w3-text-theme"><b><i class="fa fa-phone"></i> Phone number</b></label>
                 <input class="w3-input w3-border w3-round" type="tel" id="phone"
-                       name="phone" placeholder="+34 600 000 000" required>
+                       name="phone" placeholder="+34600000000" required>
                 <span class="w3-small w3-text-grey">Required format: +34612345678 or 612345678 (7-15 digits without spaces, optional '+')</span>
             </div>
 

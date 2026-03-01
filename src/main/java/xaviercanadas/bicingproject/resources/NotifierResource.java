@@ -24,7 +24,7 @@ public class NotifierResource {
         try {
             NotifierService.notifySlots(phoneNumber);
             GenericResponse response = new GenericResponse("Update sent successfully to Telegram");
-            return Response.status(Response.Status.NO_CONTENT)
+            return Response.status(Response.Status.OK)
                     .entity(response)
                     .build();
 
