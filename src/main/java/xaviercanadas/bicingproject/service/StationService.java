@@ -9,7 +9,10 @@ import org.apache.log4j.Logger;
 import xaviercanadas.bicingproject.model.bicing.Data;
 import xaviercanadas.bicingproject.model.bicing.Station;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class StationService {
 
@@ -63,7 +66,28 @@ public class StationService {
         }
     }
 
+
+    /**
+     * Retrieves the stations from the getAllStations list.
+     * This approach is not optimal but for this lab is ok.
+     * Maybe in the api there is a specific endpoint to retrieve only a set of stations by its id.
+     */
     public static List<Station> getStationsByIds(List<Integer> station_ids) {
-        return List.of();
+        if (station_ids == null || station_ids.isEmpty()) {
+            return List.of();
+        }
+
+        List<Station> stations = getAllStations();
+
+        Set<Integer> ids = new HashSet<>(station_ids);
+
+        List<Station> filteredStations = new ArrayList<>();
+        for (Station s : stations) {
+            if (ids.contains(s.station_id())) {
+                filteredStations.add(s);
+            }
+        }
+
+        return filteredStations;
     }
 }

@@ -1,9 +1,6 @@
 package xaviercanadas.bicingproject.resources;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.NotFoundException;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import xaviercanadas.bicingproject.dto.GenericResponse;
@@ -15,7 +12,14 @@ public class NotifierResource {
     @GET
     @Path("/slots")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response notifyAvailableSlots(String phoneNumber) {
+    public Response notifyAvailableSlots(@QueryParam("phone") String phoneNumber) {
+
+        if (phoneNumber == null || phoneNumber.isEmpty()) {
+            GenericResponse response = new GenericResponse("The phone number is null or empty");
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(response)
+                    .build();
+        }
 
         try {
             NotifierService.notifySlots(phoneNumber);
