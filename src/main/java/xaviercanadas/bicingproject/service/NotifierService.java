@@ -35,4 +35,26 @@ public class NotifierService {
         TelegramMessage message = new TelegramMessage(client.getTelegramChatId(),  messageText.toString());
         TelegramService.sendMessage(message, client.getTelegramToken());
     }
+
+    public static void notifyAirQuality(String phoneNumber, String ip) throws NotFoundException {
+        ClientRegistry registry = ClientRegistry.getInstance();
+        Client client = registry.getClient(phoneNumber);
+
+        if (client == null) {
+            throw new NotFoundException("The user is not registered");
+        }
+
+        // Obtain city from IP
+        String city = AirQualityService.getCityFromIp(ip);
+        
+        // Obtain air quality info for the city
+        String airQualityInfo = AirQualityService.getAirQuality(city);
+
+        // Build message and send it to the user via Telegram
+        String messageText = "Detected location: " + city + "\n" +
+                             "Air quality: " + airQualityInfo;
+
+        TelegramMessage message = new TelegramMessage(client.getTelegramChatId(), messageText);
+        TelegramService.sendMessage(message, client.getTelegramToken());
+    }
 }

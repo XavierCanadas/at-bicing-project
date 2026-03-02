@@ -23,8 +23,11 @@
 
             <!-- Submit -->
             <div class="w3-section">
-                <button type="submit" class="w3-button w3-theme w3-hover-theme w3-round w3-block">
-                    <i class="fa fa-paper-plane"></i> Send Notification
+                <button type="submit" id="btn-bicing" class="w3-button w3-theme w3-hover-theme w3-round w3-block w3-margin-bottom">
+                     <i class="fa fa-bicycle"></i> Send Bicing Notification
+                </button>
+                <button type="button" id="btn-air" class="w3-button w3-blue w3-hover-blue w3-round w3-block">
+                     <i class="fa fa-cloud"></i> Send Air Quality Notification
                 </button>
             </div>
 

@@ -117,7 +117,7 @@ public class OpenGatewayService {
             Client client = ClientBuilder.newClient();
             WebTarget target = client.target(AGE_VERIFICATION_URL);
 
-            String jsonPayload = "{\"ageThreshold\": 18}";
+            String jsonPayload = "{\"ageThreshold\": 25}";
 
             Response response = target.request(MediaType.APPLICATION_JSON)
                     .header("Authorization", "Bearer " + token)
