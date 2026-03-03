@@ -10,8 +10,7 @@ public class AirQualityService {
 
     private final static Logger logger = Logger.getLogger(AirQualityService.class);
 
-    // TODO: Substitueix per les URLs que et doni el document del lab
-    private static final String IP_API_URL = "http://ip-api.com/json/"; 
+    private static final String IP_API_URL = "http://ip-api.com/json/";
     private static final String AIR_QUALITY_API_URL = "https://api.waqi.info/feed/";
 
     private static final String AIR_QUALITY_TOKEN = System.getenv("AIR_QUALITY_TOKEN");
@@ -19,7 +18,6 @@ public class AirQualityService {
     public static String getCityFromIp(String ip) {
         try {
             Client client = ClientBuilder.newClient();
-            // Exemple assumint que l'API funciona concatenant la IP al final
             Response response = client.target(IP_API_URL + "/" + ip)
                     .request(MediaType.APPLICATION_JSON)
                     .get();
