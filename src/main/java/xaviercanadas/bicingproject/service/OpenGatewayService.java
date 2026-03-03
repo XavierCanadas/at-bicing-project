@@ -126,14 +126,14 @@ public class OpenGatewayService {
             String jsonResponse = response.readEntity(String.class);
 
             if (response.getStatus() == 200) {
-                logger.info("Resposta d'Age Verification: " + jsonResponse);
+                logger.info("Response from Age Verification: " + jsonResponse);
                 return jsonResponse.contains("\"ageCheck\":\"true\"") || jsonResponse.contains("\"ageCheck\": \"true\"");
             } else {
-                logger.warn("El número " + phoneNumber + " no s'ha verificat. Status: " + response.getStatus() + ", Reason: " + jsonResponse);
+                logger.warn("The number " + phoneNumber + " has not been verified. Status: " + response.getStatus() + ", Reason: " + jsonResponse);
                 return false;
             }
         } catch (Exception e) {
-            logger.error("Excepció verificant edat: " + e.getMessage());
+            logger.error("Exception verifying age: " + e.getMessage());
             return false;
         }
     }

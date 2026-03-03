@@ -56,9 +56,9 @@ public class StationService {
         if (responseData != null && responseData.data() != null) {
             // Update Cache
             cachedStations = responseData.data().stations();
+            logger.info("Stations retrieved: " + cachedStations.size());
             lastCacheUpdate = System.currentTimeMillis();
 
-            logger.info("API response received. " + cachedStations.size() + " stations retrieved.");
             return cachedStations;
         } else {
             logger.warn("Empty response from Bicing API.");
