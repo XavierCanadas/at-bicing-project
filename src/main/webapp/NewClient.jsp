@@ -12,9 +12,9 @@
 
             <!-- name -->
             <div class="w3-section">
-                <label class="w3-text-theme"><b><i class="fa fa-name"></i> Name</b></label>
+                <label class="w3-text-theme"><b><i class="fa fa-name"></i> Full name</b></label>
                 <input class="w3-input w3-border w3-round" type="text" id="name"
-                       name="name" placeholder="enter your name" required>
+                       name="name" placeholder="enter your full name" required>
             </div>
 
             <!-- Phone -->

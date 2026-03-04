@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import xaviercanadas.bicingproject.dto.GenericResponse;
 import xaviercanadas.bicingproject.dto.SubscribeRequest;
 import xaviercanadas.bicingproject.service.ClientService;
+import xaviercanadas.bicingproject.service.OpenGatewayService;
 
 @Path("/clients")
 public class ClientResource {
@@ -48,11 +49,19 @@ public class ClientResource {
         }
 
         logger.info("Verifying user's age via Open Gateway...");
-        boolean isAdult = xaviercanadas.bicingproject.service.OpenGatewayService.isAdult(request.phone());
+        boolean isAdult = OpenGatewayService.isAdult(request.phone());
         
         if (!isAdult) {
             logger.warn("The client with phone number " + request.phone() + " did not pass the age verification.");
             GenericResponse errorResponse = new GenericResponse("You must be an adult to subscribe (over 25).");
+            //return Response.status(Response.Status.FORBIDDEN)
+                    //.entity(errorResponse).build();
+        }
+        String internationalPhoneNumber = request.phone().startsWith("+") ? request.phone() : "+34" + request.phone();
+        boolean isCorrectName = OpenGatewayService.isCorrectName(internationalPhoneNumber,  request.name());
+        if (!isCorrectName) {
+            logger.warn("The client with phone number " + request.phone() + " does not belong to ." + request.name());
+            GenericResponse errorResponse = new GenericResponse("You phone and name do not match.");
             return Response.status(Response.Status.FORBIDDEN)
                     .entity(errorResponse).build();
         }
