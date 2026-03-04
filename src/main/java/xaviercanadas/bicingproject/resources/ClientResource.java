@@ -54,8 +54,8 @@ public class ClientResource {
         if (!isAdult) {
             logger.warn("The client with phone number " + request.phone() + " did not pass the age verification.");
             GenericResponse errorResponse = new GenericResponse("You must be an adult to subscribe (over 25).");
-            //return Response.status(Response.Status.FORBIDDEN)
-                    //.entity(errorResponse).build();
+            return Response.status(Response.Status.FORBIDDEN)
+                    .entity(errorResponse).build();
         }
         String internationalPhoneNumber = request.phone().startsWith("+") ? request.phone() : "+34" + request.phone();
         boolean isCorrectName = OpenGatewayService.isCorrectName(internationalPhoneNumber,  request.name());
