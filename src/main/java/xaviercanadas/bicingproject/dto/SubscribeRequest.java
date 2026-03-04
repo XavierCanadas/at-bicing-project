@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public record SubscribeRequest(
+        @JsonProperty("name") String name,
         @JsonProperty("phone") String phone,
         @JsonProperty("telegram_token") String telegramToken,
         @JsonProperty("chat_id") long chatId,

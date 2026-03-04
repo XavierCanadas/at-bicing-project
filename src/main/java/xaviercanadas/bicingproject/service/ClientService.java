@@ -23,6 +23,7 @@ public class ClientService {
         }
 
         Client client = new Client(
+                request.name(),
                 request.phone(),
                 request.telegramToken(),
                 request.chatId(),

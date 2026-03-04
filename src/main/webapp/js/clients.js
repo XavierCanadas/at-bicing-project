@@ -85,6 +85,7 @@ App.Clients.submit = function (event) {
         : [];
 
     const payload = {
+        name:           $('#name').val().trim(),
         phone:          $('#phone').val().trim(),
         telegram_token: $('#telegram_token').val().trim(),
         chat_id:        parseInt($('#chat_id').val().trim(), 10),
@@ -100,6 +101,8 @@ App.Clients.submit = function (event) {
             </div>`);
         return;
     }
+
+    console.log(`name ${payload.name}`);
 
     $feedback.html('<p><i class="fa fa-spinner fa-spin"></i> Submitting...</p>');
     $btn.prop('disabled', true);

@@ -10,6 +10,13 @@
     <div class="w3-card w3-padding w3-round">
         <form id="new-client-form" onsubmit="App.Clients.submit(event)">
 
+            <!-- name -->
+            <div class="w3-section">
+                <label class="w3-text-theme"><b><i class="fa fa-name"></i> Name</b></label>
+                <input class="w3-input w3-border w3-round" type="text" id="name"
+                       name="name" placeholder="enter your name" required>
+            </div>
+
             <!-- Phone -->
             <div class="w3-section">
                 <label class="w3-text-theme"><b><i class="fa fa-phone"></i> Phone number</b></label>

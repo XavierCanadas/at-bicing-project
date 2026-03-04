@@ -3,6 +3,7 @@ package xaviercanadas.bicingproject.model;
 import java.util.List;
 
 public class Client {
+    private String name;
     private String phoneNumber;
     private String telegramToken;
     private long telegramChatId;
@@ -10,11 +11,20 @@ public class Client {
 
     public Client() {}
 
-    public Client(String phoneNumber, String telegramToken, long telegramChatId, List<Integer> stationIds) {
+    public Client(String name, String phoneNumber, String telegramToken, long telegramChatId, List<Integer> stationIds) {
+        this.name = name;
         this.phoneNumber = phoneNumber;
         this.telegramToken = telegramToken;
         this.telegramChatId = telegramChatId;
         this.stationIds = stationIds;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhoneNumber() {
